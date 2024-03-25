@@ -1,4 +1,4 @@
-package org.aolifu;
+package org.aolifu.videostream;
 
 import org.bytedeco.javacv.CanvasFrame;
 import org.bytedeco.javacv.FFmpegFrameGrabber;

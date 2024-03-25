@@ -1,4 +1,4 @@
-package org.aolifu;
+package org.aolifu.videostream;
 
 import org.apache.mina.core.buffer.IoBuffer;
 import org.bytedeco.javacv.FFmpegFrameGrabber;
@@ -18,8 +18,6 @@ import org.red5.server.net.rtmp.event.Notify;
 import org.red5.server.net.rtmp.event.VideoData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.io.File;
 
 public class VideoStreamer {
     private static final Logger logger = LoggerFactory.getLogger(VideoStreamer.class);

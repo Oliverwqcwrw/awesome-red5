@@ -1,4 +1,4 @@
-package org.aolifu;
+package org.aolifu.videostream;
 
 import org.bytedeco.ffmpeg.avcodec.AVPacket;
 import org.bytedeco.ffmpeg.global.avcodec;  
