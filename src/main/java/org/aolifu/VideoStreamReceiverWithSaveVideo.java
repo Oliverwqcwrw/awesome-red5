@@ -43,10 +43,9 @@ public class VideoStreamReceiverWithSaveVideo {
         while ((frame = grabber.grab()) != null) {
             recorder.record(frame);
             // 停止录制和抓取
-            if (i++ == 1000) {
+            if (i++ == 3000) {
                 recorder.stop();
                 break;
-
             }
 
         }

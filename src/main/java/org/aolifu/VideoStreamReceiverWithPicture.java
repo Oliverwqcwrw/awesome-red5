@@ -21,7 +21,7 @@ public class VideoStreamReceiverWithPicture {
         // 创建一个Java2DFrameConverter实例，用于转换Frame为BufferedImage
         Java2DFrameConverter converter = new Java2DFrameConverter();
 
-        // 计数器，用于决定是否保存当前帧为图片
+        // 计数器，用于决定是否保存当前帧为图片 15s视频1000帧
         int frameCount = 0;
         int saveFrameAfter = 100; // 假设我们想在每100帧后保存一次图片
         while (true) {
