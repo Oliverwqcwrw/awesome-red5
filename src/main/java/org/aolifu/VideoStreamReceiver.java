@@ -1,40 +1,25 @@
 package org.aolifu;
 
-import org.red5.client.net.rtmp.RTMPClient;
-import org.red5.server.api.event.IEvent;
-import org.red5.server.api.event.IEventDispatcher;
-import org.red5.server.net.rtmp.RTMPConnection;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.bytedeco.javacv.CanvasFrame;
+import org.bytedeco.javacv.FFmpegFrameGrabber;
+import org.bytedeco.javacv.Frame;
 
 public class VideoStreamReceiver {
-    private static final Logger logger = LoggerFactory.getLogger(VideoStreamReceiver.class);
 
-    private String red5Url;
-    private String streamName;
+    public static void main(String[] args) throws Exception {
+        String rtmpUrl = "rtmp://localhost/live/livestream"; // 替换为你的RTMP流地址
 
-    public VideoStreamReceiver(String red5Url, String streamName) {
-        this.red5Url = red5Url;
-        this.streamName = streamName;
-    }
+        FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(rtmpUrl);
+        grabber.start();
 
-    public void receive() {
-        RTMPClient rtmpClient = new RTMPClient();
-        rtmpClient.connect("localhost", 1935, "live");
-        RTMPConnection connection = rtmpClient.getConnection();
-        rtmpClient.setStreamEventDispatcher(new IEventDispatcher() {
-            @Override
-            public void dispatchEvent(IEvent event) {
-                logger.info("Event: {}", event);
+        CanvasFrame canvas = new CanvasFrame("Video Stream", 1);
+        canvas.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+
+        while (true) {
+            Frame frame = grabber.grab();
+            if (frame != null) {
+                canvas.showImage(frame);
             }
-        });
-    }
-
-    public static void main(String[] args) {
-        String red5Url = "rtmp://localhost/live";
-        String streamName = "myStream1";
-
-        VideoStreamReceiver receiver = new VideoStreamReceiver(red5Url, streamName);
-        receiver.receive();
+        }
     }
 }
