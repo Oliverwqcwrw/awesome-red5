@@ -8,7 +8,7 @@ import java.io.File;
 public class VideoCutter {  
     public static void main(String[] args) throws Exception {  
         String inputFile = System.getProperty("user.home") + "/Downloads/temp/output.mp4";
-        String outputFile = System.getProperty("user.home") + "/Downloads/temp/output-cut1.mp4";
+        String outputFile = System.getProperty("user.home") + "/Downloads/temp/output-cut3.mp4";
         int startTime = 0; // 单位：秒  
         int duration = 10; // 单位：秒  
   
