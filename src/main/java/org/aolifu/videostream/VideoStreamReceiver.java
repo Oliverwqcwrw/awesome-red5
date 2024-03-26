@@ -6,9 +6,7 @@ import org.bytedeco.javacv.Frame;
 
 public class VideoStreamReceiver {
 
-    public static void main(String[] args) throws Exception {
-        String rtmpUrl = "rtmp://localhost/live/myStream1"; // 替换为你的RTMP流地址
-
+    public static void receiveStream(String rtmpUrl) throws FFmpegFrameGrabber.Exception {
         FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(rtmpUrl);
         grabber.start();
 

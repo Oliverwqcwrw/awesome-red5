@@ -6,12 +6,7 @@ import org.bytedeco.javacv.*;
   
 import java.io.File;  
   
-public class AudioExtractor {  
-    public static void main(String[] args) throws Exception {  
-        String inputVideoFile = System.getProperty("user.home") + "/Downloads/temp/output-cut1.mp4";
-        String outputAudioFile = System.getProperty("user.home") + "/Downloads/temp/audio.aac";
-        extractAudio(inputVideoFile, outputAudioFile);
-    }
+public class AudioExtractor {
 
     public static void extractAudio(String inputVideoFile, String outputAudioFile) throws Exception {
         FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(inputVideoFile);

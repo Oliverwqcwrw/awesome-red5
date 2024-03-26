@@ -5,18 +5,6 @@ import org.bytedeco.javacv.*;
 
 
 public class VideoMerger {
-    public static void main(String[] args) throws Exception {
-        // 输入视频文件路径  
-        String[] inputVideoFiles = {
-                System.getProperty("user.home") + "/Downloads/temp/output-cut1.mp4",
-                System.getProperty("user.home") + "/Downloads/temp/output-cut2.mp4",
-                System.getProperty("user.home") + "/Downloads/temp/output-cut3.mp4"
-        };
-
-        // 输出视频文件路径  
-        String outputVideoFile = System.getProperty("user.home") + "/Downloads/temp/merge2.mp4";
-        mergeVideo(inputVideoFiles, outputVideoFile);
-    }
 
     public static void mergeVideo(String[] inputVideoFiles, String outputVideoFile) throws Exception {
         FFmpegFrameRecorder recorder = new FFmpegFrameRecorder(outputVideoFile, getWidth(inputVideoFiles[0]), getHeight(inputVideoFiles[0]));

@@ -5,12 +5,6 @@ import org.bytedeco.javacv.FrameGrabber;
 
 public class VideoDuration {
 
-    public static void main(String[] args) {
-        String videoFilePath = System.getProperty("user.home") + "/Downloads/temp/output.mp4"; // 替换为你的视频文件路径
-        long videoDuration = getVideoDuration(videoFilePath);
-        System.out.println("Video duration: " + videoDuration + " seconds");
-    }
-
     public static long getVideoDuration(String videoFilePath) {
 
         FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(videoFilePath);

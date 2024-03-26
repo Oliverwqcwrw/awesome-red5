@@ -11,13 +11,13 @@ import java.io.File;
 import java.io.IOException;
 
 public class VideoStreamReceiverWithPicture {
-    public static void main(String[] args) throws Exception {
-        String rtmpUrl = "rtmp://localhost/live/livestream"; // 替换为你的RTMP流地址
-        savePicture(rtmpUrl);
 
-    }
-
-    public static void savePicture(String rtmpUrl) throws IOException {
+    /**
+     * @param rtmpUrl RTMP流地址
+     * @param saveFrameAfter 保存图片的间隔帧数
+     * @throws IOException
+     */
+    public static void savePicture(String rtmpUrl, int saveFrameAfter) throws IOException {
         FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(rtmpUrl);
         grabber.start();
 
@@ -28,7 +28,6 @@ public class VideoStreamReceiverWithPicture {
 
         // 计数器，用于决定是否保存当前帧为图片 15s视频1000帧
         int frameCount = 0;
-        int saveFrameAfter = 100; // 假设我们想在每100帧后保存一次图片
         while (true) {
             Frame frame = grabber.grab();
             if (frame != null) {

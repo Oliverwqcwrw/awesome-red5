@@ -7,12 +7,7 @@ import static org.bytedeco.ffmpeg.global.avformat.avformat_network_deinit;
 import static org.bytedeco.ffmpeg.global.avformat.avformat_network_init;
 import static org.bytedeco.ffmpeg.global.avutil.AV_SAMPLE_FMT_FLTP;
 
-public class RtmpPusher {  
-    public static void main(String[] args) throws Exception {  
-        String inputFile = System.getProperty("user.home") + "/Downloads/temp/output-cut1.mp4";// 本地视频文件路径
-        String rtmpUrl = "rtmp://localhost/live/myStream1"; // RTMP服务器地址和流名
-        push(inputFile, rtmpUrl);
-    }
+public class RtmpPusher {
 
     public static void push(String inputFile, String rtmpUrl) throws Exception {
         // 初始化网络（如果使用的是RTMP/RTSP等网络协议）

@@ -5,14 +5,7 @@ import org.bytedeco.javacv.*;
   
 import java.io.File;  
   
-public class VideoCutter {  
-    public static void main(String[] args) throws Exception {  
-        String inputFile = System.getProperty("user.home") + "/Downloads/temp/output.mp4";
-        String outputFile = System.getProperty("user.home") + "/Downloads/temp/output-cut4.mp4";
-        int startTime = 5; // 单位：秒
-        int duration = 10; // 单位：秒
-        cutVideo(inputFile, outputFile, startTime, duration);
-    }
+public class VideoCutter {
 
     public static void cutVideo(String inputFile, String outputFile, int startTime, int duration) throws Exception {
         FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(inputFile);
