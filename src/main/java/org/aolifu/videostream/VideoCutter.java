@@ -8,17 +8,20 @@ import java.io.File;
 public class VideoCutter {  
     public static void main(String[] args) throws Exception {  
         String inputFile = System.getProperty("user.home") + "/Downloads/temp/output.mp4";
-        String outputFile = System.getProperty("user.home") + "/Downloads/temp/output-cut3.mp4";
-        int startTime = 0; // 单位：秒  
-        int duration = 10; // 单位：秒  
-  
+        String outputFile = System.getProperty("user.home") + "/Downloads/temp/output-cut4.mp4";
+        int startTime = 5; // 单位：秒
+        int duration = 10; // 单位：秒
+        cutVideo(inputFile, outputFile, startTime, duration);
+    }
+
+    public static void cutVideo(String inputFile, String outputFile, int startTime, int duration) throws Exception {
         FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(inputFile);
-        grabber.start();  
-  
-        FrameRecorder recorder = new FFmpegFrameRecorder(outputFile, grabber.getImageWidth(), grabber.getImageHeight(), grabber.getAudioChannels());  
-        recorder.setVideoCodec(avcodec.AV_CODEC_ID_H264);  
-        recorder.setFormat("mp4");  
-        recorder.setSampleRate(grabber.getSampleRate());  
+        grabber.start();
+
+        FrameRecorder recorder = new FFmpegFrameRecorder(outputFile, grabber.getImageWidth(), grabber.getImageHeight(), grabber.getAudioChannels());
+        recorder.setVideoCodec(avcodec.AV_CODEC_ID_H264);
+        recorder.setFormat("mp4");
+        recorder.setSampleRate(grabber.getSampleRate());
         recorder.start();
 
         Frame frame;
@@ -37,5 +40,5 @@ public class VideoCutter {
         }
         recorder.stop();
         grabber.stop();
-    }  
+    }
 }

@@ -10,7 +10,11 @@ public class VideoStreamReceiverWithSaveVideo {
     public static void main(String[] args) throws Exception {
         String rtmpUrl = "rtmp://localhost/live/livestream"; // 替换为你的RTMP流地址
         String outputFile = System.getProperty("user.home") + "/Downloads/temp/output.mp4"; // 输出视频文件的路径
+        receiveVideoStreamWithSave(rtmpUrl, outputFile);
 
+    }
+
+    public static void receiveVideoStreamWithSave(String rtmpUrl, String outputFile) throws Exception {
         FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(rtmpUrl);
         grabber.start();
 
@@ -35,7 +39,6 @@ public class VideoStreamReceiverWithSaveVideo {
         recorder.setFrameRate(frameRate);
         recorder.setSampleRate(sampleRate);
         recorder.setVideoBitrate(videoBitrate);
-
         recorder.start();
 
         int i = 0;
@@ -43,12 +46,11 @@ public class VideoStreamReceiverWithSaveVideo {
         while ((frame = grabber.grab()) != null) {
             recorder.record(frame);
             // 停止录制和抓取
-            if (i++ == 3000) {
+            if (i++ > 3000) {
                 recorder.stop();
                 break;
             }
-
         }
-
+        grabber.stop();
     }
 }

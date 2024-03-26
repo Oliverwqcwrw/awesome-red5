@@ -8,11 +8,16 @@ import org.bytedeco.javacv.Java2DFrameConverter;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 public class VideoStreamReceiverWithPicture {
     public static void main(String[] args) throws Exception {
         String rtmpUrl = "rtmp://localhost/live/livestream"; // 替换为你的RTMP流地址
+        savePicture(rtmpUrl);
 
+    }
+
+    public static void savePicture(String rtmpUrl) throws IOException {
         FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(rtmpUrl);
         grabber.start();
 
@@ -41,8 +46,12 @@ public class VideoStreamReceiverWithPicture {
                     ImageIO.write(bufferedImage, "png", file);
                     System.out.println("Saved frame as " + file.getAbsolutePath());
                 }
-
                 frameCount++;
+            }
+            if (frameCount > 1000) {
+                grabber.stop();
+                grabber.release();
+                break;
             }
         }
     }

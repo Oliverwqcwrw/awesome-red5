@@ -7,7 +7,7 @@ import org.bytedeco.javacv.Frame;
 public class VideoStreamReceiver {
 
     public static void main(String[] args) throws Exception {
-        String rtmpUrl = "rtmp://localhost/live/livestream"; // 替换为你的RTMP流地址
+        String rtmpUrl = "rtmp://localhost/live/myStream1"; // 替换为你的RTMP流地址
 
         FFmpegFrameGrabber grabber = new FFmpegFrameGrabber(rtmpUrl);
         grabber.start();
@@ -15,11 +15,12 @@ public class VideoStreamReceiver {
         CanvasFrame canvas = new CanvasFrame("Video Stream", 1);
         canvas.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
 
-        while (true) {
+        while (grabber.grab() != null) {
             Frame frame = grabber.grab();
             if (frame != null) {
                 canvas.showImage(frame);
             }
         }
+        grabber.stop();
     }
 }
