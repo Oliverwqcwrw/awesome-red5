@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.aolifu</groupId>
-    <artifactId>awesome-red5</artifactId>
+    <artifactId>awesome-rtmp</artifactId>
     <packaging>jar</packaging>
     <version>1.0.0</version>
-    <url>https://github.com/Oliverwqcwrw/awesome-red5</url>
+    <url>https://github.com/Oliverwqcwrw/awesome-rtmp</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
